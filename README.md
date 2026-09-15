@@ -34,19 +34,10 @@ GitHub Codespace é um ambiente de desenvolvimento completo baseado em nuvem, di
 
 ### 1.2 Abrindo um Codespace neste Repositório
 
-**Opção 1: Pelo botão do repositório**
-
-1. Acesse o repositório: [infoweb-pos/rn-01-introducao](https://github.com/infoweb-pos/rn-01-introducao)
-2. Clique no botão verde **"Code"**
+1. Fork esse repositório: [infoweb-pos/rn-01-introducao](https://github.com/infoweb-pos/rn-01-introducao)
+2. No seu repositório, clique no botão verde **"Code"**
 3. Clique na aba **"Codespaces"**
 4. Clique em **"Create codespace on main"**
-
-**Opção 2: URL direta**
-
-Você pode abrira diretamente via URL:
-```
-https://github.dev/infoweb-pos/rn-01-introducao
-```
 
 ### 1.3 Primeira Vez Abrindo o Codespace
 
@@ -86,21 +77,7 @@ v18.17.0
 9.6.7
 ```
 
-### 2.2 Instalando Expo CLI no Codespace
-
-No terminal do Codespace, execute:
-
-```bash
-npm install -g expo-cli
-```
-
-Verifique a instalação:
-
-```bash
-expo --version
-```
-
-### 2.3 Verificando o Git
+### 2.2 Verificando o Git
 
 Git já está pré-configurado no Codespace:
 
@@ -131,37 +108,86 @@ Terminal (parte inferior):
 
 ### 3.1 Criando um Novo Projeto no Codespace
 
-No terminal do Codespace, navegue para uma pasta de trabalho:
+No terminal do Codespace, crie um novo projeto Expo:
 
 ```bash
-cd ~
+npx create-expo-app@latest
 ```
 
-Agora crie um novo projeto Expo:
+### 3.2 Respondendo às Perguntas do npx e do expo
+
+O npx e expo fará algumas perguntas:
+
+```
+Need to install the following packages:
+create-expo-app@4.0.0
+Ok to proceed? (y)
+```
+**Responda `y`**: digite `y` e `Enter` para continuar o processo de criação do aplicativo react native com expo
+
+```
+? What is your app named? › my-app
+```
+
+**Responda: `my-app`** pressione `Enter` que permanecerá o nome padrão do aplicativo
+
+```
+? Select an Expo SDK version: › - Use arrow-keys. Return to submit.
+❯   Latest (SDK 57) - Recommended for most projects
+    Other SDK version…
+```
+
+**Responda: `Latest (SDK 57)`** pressione `Enter`
+
+```
+? You are creating a project inside of an existing Git repository. Skip initializing a new git repository? › (Y/n)
+
+```
+
+**Responda `y`**: digite `y` para continuar o processo de criação do aplicativo react native com expo
+
+**O resultado** deve parecer com algo abaixo:
 
 ```bash
-expo init meu-primeiro-app
+✔ What is your app named? … my-app
+✔ Select an Expo SDK version: › Latest (SDK 57)
+Creating my-app using the default template.
+
+Tip:
+  • npx create-expo-app --template  to pick from other templates
+  • npx create-expo-app --example   to explore https://github.com/expo/examples
+
+✔ Downloaded and extracted project files.
+> npm install
+npm warn deprecated uuid@7.0.3: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+
+added 607 packages, and audited 608 packages in 2m
+
+48 packages are looking for funding
+  run `npm fund` for details
+
+14 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+✅ Your project is ready!
+
+To run your project, navigate to the directory and run one of the following npm commands.
+
+- cd my-app
+- npm run android
+- npm run ios # you need to use macOS to build the iOS project - use the Expo app if you need to do iOS development without a Mac
+- npm run web
+✔ You are creating a project inside of an existing Git repository. Skip initializing a new git repository? … yes
 ```
-
-### 3.2 Respondendo às Perguntas do Expo
-
-O Expo fará algumas perguntas:
-
-```
-? Choose a template:
-  › bare
-    minimal
-    managed
-```
-
-**Selecione: `managed`** (pressione as setas e Enter)
-
-O Expo pode perguntar se deseja usar Yarn ou npm. Recomendamos **npm**.
 
 ### 3.3 Entrando na Pasta do Projeto
 
 ```bash
-cd meu-primeiro-app
+cd my-app
 ```
 
 ### 3.4 Estrutura do Projeto Criado
@@ -169,133 +195,131 @@ cd meu-primeiro-app
 Veja a estrutura no Codespace clicando na pasta do projeto no Explorer:
 
 ```
-meu-primeiro-app/
-├── node_modules/        # Dependências do projeto
-├── App.js               # Componente principal
-├── app.json             # Configurações do Expo
-├── package.json         # Informações e dependências
-├── package-lock.json    # Versões exatas das dependências
-└── .gitignore          # Arquivos ignorados pelo Git
+my-app/
+├── .claude/
+├── .expo/                # Arquivos temporários do Expo/Metro
+├── .gitignore            # Arquivos ignorados pelo Git
+├── .vscode/              # Configurações do editor/VS Code
+├── assets/
+│   └── images/
+│       └── tabIcons/
+├── node_modules/         # Dependências do projeto
+├── scripts/
+│   └── reset-project.js
+├── src/
+│   ├── app/
+│   │   ├── _layout.tsx
+│   │   ├── explore.tsx
+│   │   └── index.tsx
+│   ├── components/
+│   │   ├── animated-icon.module.css
+│   │   ├── animated-icon.tsx
+│   │   ├── animated-icon.web.tsx
+│   │   ├── app-tabs.tsx
+│   │   ├── app-tabs.web.tsx
+│   │   ├── external-link.tsx
+│   │   ├── hint-row.tsx
+│   │   ├── themed-text.tsx
+│   │   ├── themed-view.tsx
+│   │   ├── web-badge.tsx
+│   │   └── ui/
+│   │       └── collapsible.tsx
+│   ├── constants/
+│   │   └── theme.ts
+│   ├── global.css
+│   ├── hooks/
+│   │   ├── use-color-scheme.ts
+│   │   ├── use-color-scheme.web.ts
+│   │   └── use-theme.ts
+├── AGENTS.md
+├── app.json              # Configuração do app Expo
+├── CLAUDE.md
+├── expo-env.d.ts
+├── LICENSE
+├── package.json          # Scripts e dependências do projeto
+├── package-lock.json     # Versões exatas das dependências
+├── README.md             # Documentação do projeto
+├── tsconfig.json
+└── .gitignore            # Arquivos ignorados pelo Git
 ```
-
-### 3.5 Entendendo o App.js
-
-Clique no arquivo `App.js` no Explorer para abrir. Você verá:
-
-```javascript
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-```
-
-**Explicação:**
-- `View`: componente container (similar ao `<div>` do React Web)
-- `Text`: componente para exibir texto (sempre use para texto)
-- `StyleSheet`: API para criar estilos otimizados
-- `styles`: objeto com estilos CSS-in-JS similar ao React Web
-
-### 3.6 Personalizando o App.js
-
-Vamos fazer uma mudança simples. No `App.js`, substitua a linha de `Text` por:
-
-```javascript
-<Text>Olá! Meu primeiro app em React Native! 🚀</Text>
-```
-
-Salve o arquivo: `Ctrl + S` (Windows/Linux) ou `Cmd + S` (Mac)
-
----
 
 ## 4. Como Executar o Aplicativo no Codespace
 
 ### 4.1 Iniciando o Servidor Expo
 
 No terminal do Codespace (dentro da pasta do projeto), execute:
+Crie uma conta em [expo.dev](https://expo.dev/)
 
 ```bash
-npm start
+npx expo login
+
 ```
+
+Você verá uma saída parecida a:
+```bash
+Log in to EAS with email or username (exit and run 'npx expo login --help' for other login options)
+✔ Email or username … leonardo.minora@gmail.com
+✔ Password … ********************
+
+```
+
+Agora inicie o expo com o comando `npx expo start --tunnel`
 
 Você verá uma saída similar a:
 
 ```
-Starting Expo CLI...
+Starting project at /workspaces/rn-01-introducao/my-app
+Using src/app as the root directory for Expo Router.
+React Compiler enabled
+ ERROR  An unknown error occurred while installing React Native DevTools. Details:
 
-Expo  ready at http://localhost:19000
+/workspaces/rn-01-introducao/my-app/node_modules/@react-native/debugger-shell/bin/react-native-devtools: error while loading shared libraries: libatk-1.0.so.0: cannot open shared object file: No such file or directory
 
- ┌──────────────────────────────────────────────────────┐
- │                                                      │
- │  Scan this QR code with Expo Go (Android) or the   │
- │  Camera app (iOS)                                   │
- │                                                      │
- │  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  │
- │  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  │
- │  ▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓▓    │
- │  ▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓  ▓▓▓▓▓    │
- │  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  │
- │                                                      │
- └──────────────────────────────────────────────────────┘
+Starting Metro Bundler
 
-Press 'a' (Android), 'i' (iOS), 'w' (web), 'c' (clear), or 'q' (quit)
+Tunnel connected.
+Tunnel ready.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▀ █▀▀▄▄▀ ▄▄▄▀█ ▄▄▄▄▄ █
+█ █   █ █▀ ▄ █▀▀ ▄▀█ ▄█ █   █ █
+█ █▄▄▄█ █▀█ █▄█▄▀▄▄▄▄▄█ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄█▄█ █▄█ █▄█ █▄▄▄▄▄▄▄█
+█ ▄▄ ▄█▄ ▄ ▄█▄ ███ ▀▀▀▄▀▄▀▄▀▄▀█
+█▄▀▄▀ ▄▄▀▀ ▀ ▄▄▄ ▄█▄▀█▀█▄▄█▄ ██
+███▀▄▄▀▄▄▀▄▀▄▀▄▄▄▄ ▀▀  ▀▀▀▀ ▄▀█
+█▄▀▀▄▀ ▄███▀█▀█▄ █▄▀█▄█▄▀ ▄▄▀██
+█▀ ████▄▀▄ ▄█▄ ▄█▄ ▀▀▀▀▀ ▀▀ ▄ █
+█ █ ▄ ▀▄▀▀█▀ ▄█▀ █▄█▀▀▀▄██ ▄███
+█▄█▄▄▄▄▄▄▀▀▄▄ ▄ ▄▄▄█▄ ▄▄▄  ▄▀▀█
+█ ▄▄▄▄▄ █▄▀▄█▄▄█ █▄   █▄█ ▀████
+█ █   █ █ █▄▀█▄▄█▄▄▀▀ ▄▄▄▄▀ ▀ █
+█ █▄▄▄█ █ ▄▀▀▀█   █▄▄ ▄▄ ▄▀▄ ██
+█▄▄▄▄▄▄▄█▄███▄▄▄██▄▄▄██████▄███
+
+› Scan the QR code above to open in Expo Go.
+› Metro: exp://tnkjti4-leonardo-minora-8081.exp.direct
+› Web: http://localhost:8081
+
+› Using Expo Go (Press s to switch to development build)
+› Press ? │ show all commands
+
+Logs for your project will appear below. Press Ctrl+C to exit.
+
 ```
 
-### 4.2 Opção 1: Testando no Navegador (Recomendado no Codespace)
+Com o expo iniciado, agora precisa tornar a porta pública do codespace.
+Ao lado da aba do `Terminal` no codespace, tem a aba `Portas`.
+Clique nesta aba para aparecer as portas abertas do seu codespace.
+Deve ter 2 portas abertas, ambas com visibilidade `Private`.
+Na porta 8081, clique com o botão direito para aparecer um menu de contexto.
+Nesse menu, clique em `Visibilidade da porta` e selecione `Public`.
 
-No terminal, pressione **`w`** e Enter:
+### 4.2 Testando o aplicativo
 
-```
-Press 'a' (Android), 'i' (iOS), 'w' (web), 'c' (clear), or 'q' (quit)
-w
-```
+Você pode testar o aplicativo no próprio navegador ou no seu celular.
+Se quiser testar no navegador:
 
-**O que vai acontecer:**
-
-1. Uma nova aba do navegador abrirá automaticamente
-2. Você verá seu app rodando em um simulador visual
-3. Cada mudança no código será refletida automaticamente (hot reload)
-
-**Isso é perfeito para testar no Codespace!**
-
-### 4.3 Testando Mudanças no Código (Hot Reload)
-
-Com o app rodando no navegador:
-
-1. Abra o arquivo `App.js` no Codespace
-2. Mude o texto de qualquer componente `<Text>`
-3. Salve o arquivo (`Ctrl + S`)
-4. **Automaticamente** a mudança aparecerá no navegador sem recarregar
-
-**Exemplo:**
-
-Mude de:
-```javascript
-<Text>Olá! Meu primeiro app em React Native! 🚀</Text>
-```
-
-Para:
-```javascript
-<Text>React Native é incrível! 💻📱</Text>
-```
-
-Salve e veja a mudança aparecer no simulador!
-
-### 4.4 Opção 2: Testando no Celular Físico (Opcional)
+**Passo único** Ainda em portas no codespace, clique no símbolo de navegador (um círculo com hashtag dentro) na porta 8081
 
 Se quiser testar no seu smartphone:
 
@@ -303,16 +327,33 @@ Se quiser testar no seu smartphone:
 - Android: [Play Store - Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent)
 - iOS: [App Store - Expo Go](https://apps.apple.com/us/app/expo-go/id982107779)
 
-**Passo 2:** Com o servidor Expo rodando (`npm start`), pressione **`a`** (Android) ou **`i`** (iOS):
+**Passo 2:** Abra o aplicativo no celular
+- com o aplicativo da câmera, aponte para o qrcode do terminal no codespace
+- o Expo Go será aberto e o aplicativo será carregado
 
-```
-Press 'a' (Android), 'i' (iOS), 'w' (web), 'c' (clear), or 'q' (quit)
-a
+
+### 4.3 Testando Mudanças no Código (Hot Reload)
+
+Com o app rodando no navegador:
+
+1. Abra o arquivo `src/app/index.tsx` no Codespace
+2. Mude o texto de qualquer componente `<ThemedText>`
+3. O codesapce **automaticamente** salva o arquivo (`Ctrl + S`)
+4. **Automaticamente** a mudança aparecerá no navegador sem recarregar
+
+**Exemplo:**
+
+Mude de:
+```tsx
+<ThemedText>Welcome to&nbsp;Expo</ThemedText>
 ```
 
-**Passo 3:** Escaneie o QR code com seu smartphone:
-- **Android**: use o Expo Go
-- **iOS**: use a câmera nativa ou Expo Go
+Para:
+```tsx
+<ThemedText>React Native é incrível! 💻📱</ThemedText>
+```
+
+Veja a mudança aparecer no simulador!
 
 ### 4.5 Parando o Servidor
 
@@ -324,13 +365,13 @@ Enquanto o servidor está rodando:
 
 | Tecla | Ação |
 |-------|------|
-| `w` | Abrir no navegador |
-| `a` | Abrir em emulador Android |
-| `i` | Abrir em emulador iOS |
-| `r` | Recarregar app |
+| `w` | Abrir no navegador          |
+| `a` | Abrir em emulador Android   |
+| `i` | Abrir em emulador iOS       |
+| `r` | Recarregar app              |
 | `m` | Mostrar menu de mais opções |
-| `c` | Limpar terminal |
-| `q` | Parar servidor |
+| `c` | Limpar terminal             |
+| `q` | Parar servidor              |
 
 ---
 
