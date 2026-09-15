@@ -778,13 +778,13 @@ Aqui estão alguns componentes essenciais do React Native:
 2. **Criar projeto**
    ```bash
    cd ~
-   expo init meu-app
-   cd meu-app
+   npx create-expo-app@latest
+   cd my-app
    ```
 
 3. **Iniciar servidor**
    ```bash
-   npm start
+   npx expo start --tunnel
    ```
 
 4. **Testar no navegador**
@@ -793,8 +793,7 @@ Aqui estão alguns componentes essenciais do React Native:
    ```
 
 5. **Fazer mudanças**
-   - Editar `App.js`
-   - Salvar (`Ctrl + S`)
+   - Editar arquivos em `src/app` e salvar
    - Ver mudança automática no navegador
 
 6. **Parar servidor**
